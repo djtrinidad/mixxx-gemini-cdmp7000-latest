@@ -122,7 +122,7 @@
                 <status>0x90</status>
                 <midino>0x11</midino>
                 <options>
-                    <normal/>
+                    <SelectKnob/>
                 </options>
             </control>
             <control>
@@ -132,7 +132,7 @@
                 <status>0x90</status>
                 <midino>0x12</midino>
                 <options>
-                    <normal/>
+                    <SelectKnob/>
                 </options>
             </control>
             <control>
