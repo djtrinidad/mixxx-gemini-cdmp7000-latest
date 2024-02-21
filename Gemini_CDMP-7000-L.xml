@@ -137,7 +137,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key></key>
+                <key>sync_leader</key>
                 <description>Master Tempo</description>
                 <status>0x90</status>
                 <midino>0x13</midino>
@@ -195,9 +195,9 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control>  <!-- FIX: Does Mixxx support bpm modes? Tap for bpm for now -->
                 <group>[Channel1]</group>
-                <key></key>
+                <key>bpm_tap</key>
                 <description>BPM Mode/Manual</description>
                 <status>0x90</status>
                 <midino>0x19</midino>
@@ -206,8 +206,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key></key>
+                <group>[EffectRack1_Channel1_Effect1]</group>
+                <key>enabled</key>
                 <description>Effect 1</description>
                 <status>0x90</status>
                 <midino>0x20</midino>
@@ -216,8 +216,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key></key>
+                <group>[EffectRack1_Channel1_Effect2]</group>
+                <key>enabled</key>
                 <description>Effect 2</description>
                 <status>0x90</status>
                 <midino>0x21</midino>
@@ -226,8 +226,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key></key>
+                <group>[EffectRack1_Channel1_Effect3]</group>
+                <key>enabled</key>
                 <description>Effect 3</description>
                 <status>0x90</status>
                 <midino>0x22</midino>
@@ -236,8 +236,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key></key>
+                <group>[Library]</group>
+                <key>MoveFocusBackward</key>
                 <description>Back</description>
                 <status>0x90</status>
                 <midino>0x23</midino>
@@ -255,7 +255,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: need to script this, to affect active effect -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Effect Param</description>
@@ -265,9 +265,9 @@
                     <normal/>
                 </options>
             </control>
-            <control>
-                <group>[Channel1]</group>
-                <key></key>
+            <control>  <!-- FIX: how to toggle between modes 0,1,2? -->
+                <group>[Controls]</group>
+                <key>ShowDurationRemaining</key>
                 <description>Time Elapsed/Remaining</description>
                 <status>0x90</status>
                 <midino>0x26</midino>
@@ -275,7 +275,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: I don't see a native control for this -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Auto Cue</description>
@@ -285,7 +285,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control>  <!-- FIX: probably need to script this -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>LOCK</description>
@@ -295,9 +295,9 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: probably need to script this -->
                 <group>[Channel1]</group>
-                <key></key>
+                <key>rateRange</key>
                 <description>Range</description>
                 <status>0x90</status>
                 <midino>0x29</midino>
@@ -307,7 +307,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key></key>
+                <key>reverse</key>
                 <description>Reverse</description>
                 <status>0x90</status>
                 <midino>0x30</midino>
@@ -317,7 +317,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key></key>
+                <key>slip_enabled</key>
                 <description>Slip</description>
                 <status>0x90</status>
                 <midino>0x31</midino>
@@ -325,7 +325,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: Needs Scripting -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Jogwheel</description>
@@ -335,9 +335,9 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: probably need to invert this -->
                 <group>[Channel1]</group>
-                <key></key>
+                <key>rate</key>
                 <description>Pitch Slider</description>
                 <status>0x90</status>
                 <midino>0x33</midino>
@@ -345,7 +345,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: needs a purpose, no fitting Mixxx control -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Track Skip Prev</description>
@@ -355,7 +355,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: needs a purpose, no fitting Mixxx control -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Track Skip Next</description>
@@ -365,7 +365,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: Needs scripting for some purpose, maybe jog param adjust -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Hold</description>
@@ -377,7 +377,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key></key>
+                <key>eject</key>
                 <description>Eject</description>
                 <status>0x90</status>
                 <midino>0x37</midino>
@@ -385,7 +385,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- On the CDMP-7000 if Vinyl mode is on, the effects are 4,5,6 vs 1,2,3 with it off -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Effect 4</description>
@@ -415,9 +415,9 @@
                     <normal/>
                 </options>
             </control>
-            <control>
-                <group>[Channel1]</group>
-                <key></key>
+            <control> <!-- FIX: script this to affect the active effect -->
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>mix</key>
                 <description>Dry/Wet</description>
                 <status>0x90</status>
                 <midino>0x41</midino>
@@ -425,7 +425,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: find a purpose/control for this -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Start Time</description>
@@ -435,7 +435,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <control> <!-- FIX: find a purpose/control for this -->
                 <group>[Channel1]</group>
                 <key></key>
                 <description>Stop Time</description>
