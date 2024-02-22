@@ -11,24 +11,29 @@
 var CDMP7000 = {};
 
 CDMP7000.init = function() {
-  CDMP7000.deck = [];
-  for (let i = 0; i < 2; i++) {
-    CDMP7000.deck[i] = new CDMP7000.Deck(i + 1, i);
-    CDMP7000.deck[i].setCurrentDeck("[Channel" + (i + 1) + "]");
-  }
-  for (i = 1; i < 40; i++) {
-    midi.SendShortMsg(0x90, i, 0x7f);
-  }
+  CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
+
 };
 
-CDMP7000.Deck = function(deckNumbers, offset) {
+CDMP7000.shutdown = function() {
+
+};
+
+CDMP7000.Deck = function (deckNumbers, midiChannel) {
   components.Deck.call(this, deckNumbers);
+ /* this.playButton = new components.PlayButton([0x90 + midiChannel, 0x01]); */
+  this.cueButton = new components.CueButton([0x90, 0x01]);
+  this.playButton = new components.PlayButton([0x90, 0x02]);
+}
 
-  this.wheelTouch = function(channel, control, value, _status, _group) {
-    if (value == 0x7F) {
-      const alpha = 1.0/8;
-      const beta = alpha/32;
-      engine.scratchEnable(script.deckFromGroup(this.currentDeck), 512, 45, alpha, beta);
-    }
-  }
-};
+this.reconnectComponents(function (c) {
+        if (c.group === undefined) {
+            // 'this' inside a function passed to reconnectComponents refers to the ComponentContainer
+            // so 'this' refers to the custom Deck object being constructed
+            c.group = this.currentDeck;
+        }
+    });
+
+CDMP7000.Deck.prototype = new components.Deck();
+  
+
