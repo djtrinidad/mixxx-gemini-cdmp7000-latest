@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<MixxxControllerPreset mixxxVersion="2.4" schemaVersion="1">
+    <info>
+        <name>Gemini CDMP-7000 Deck A</name>
+        <author>djtrinidad</author>
+        <description>Mapping for Gemini CDMP-7000 controller</description>
+        <forums></forums>
+        <manual></manual>
+    </info>
+    <controller id="CDMP-7000">
+        <scriptfiles>
+            <file functionprefix="" filename="lodash.mixxx.js"/>
+            <file functionprefix="" filename="midi-components-0.0.js"/>
+            <file functionprefix="CDMP7000" filename="Gemini_CDMP-7000-testscripts.js"/>
+        </scriptfiles>
+        <controls>
+            <!-- The CDMP-7000 should be deteced as 2 units in Mixxx L/R Deck, the same file can be used for both -->
+            <control>
+                <group>[Channel1]</group>
+                <key>CDMP7000.deck[0].cue.input</key>
+                <description>Cue</description>
+                <status>0x90</status>
+                <midino>0x01</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>CDMP7000.deck[0].play.input</key>
+                <description>Play/Pause</description>
+                <status>0x90</status>
+                <midino>0x02</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+        </controls>
+</MixxxControllerPreset>
