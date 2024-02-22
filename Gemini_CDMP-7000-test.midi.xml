@@ -17,7 +17,7 @@
             <!-- The CDMP-7000 should be deteced as 2 units in Mixxx L/R Deck, the same file can be used for both -->
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.cue.input</key>
+                <key>CDMP7000.leftDeck.cueButton.input</key>
                 <description>Cue</description>
                 <status>0x90</status>
                 <midino>0x01</midino>
@@ -27,7 +27,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.play.input</key>
+                <key>CDMP7000.leftDeck.playButton.input</key>
                 <description>Play/Pause</description>
                 <status>0x90</status>
                 <midino>0x02</midino>
