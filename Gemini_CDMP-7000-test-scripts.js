@@ -17,6 +17,16 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.cueButton = new components.CueButton([0x90, 0x01]);
   this.playButton = new components.PlayButton([0x90, 0x02]);
 
+  this.hotcueButtons = [];
+    for (var i = 1; i <= 3; i++) {
+        this.hotcueButtons[i] = new components.HotcueButton({
+            midi: [0x90, 0x04 + i],
+            number: i,
+        });
+    }
+
+  
+
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
             // 'this' inside a function passed to reconnectComponents refers to the ComponentContainer
