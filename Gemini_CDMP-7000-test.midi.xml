@@ -87,12 +87,12 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key></key>
+                <key>CDMP7000.leftDeck.shiftButton.input</key>
                 <description>Memo</description>
                 <status>0x90</status>
                 <midino>0x08</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
