@@ -1,6 +1,13 @@
 var CDMP7000 = {};
 
+
 CDMP7000.init = function() {
+  CDMP7000.shiftButton = function(channel, control, value, _status, _group) {
+        CDMP7000.deck.concat(CDMP7000.hotcueButtons).forEach(
+            value ? function(module) { module.shift(); } : function(module) { module.unshift(); }
+        );
+    };
+  
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
 
   CDMP7000.leftDeck.reconnectComponents();
