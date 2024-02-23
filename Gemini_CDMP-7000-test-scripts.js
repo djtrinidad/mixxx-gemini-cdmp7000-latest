@@ -32,7 +32,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         });
     }
 
-  this.MemoButton = new components.Button({
+  this.memoButton = new components.Button({
     midi: [0x91, 0x01],
     group: '[Channel1]',
     key: 'touch_shift',
