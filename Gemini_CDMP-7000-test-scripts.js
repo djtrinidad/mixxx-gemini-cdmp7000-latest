@@ -31,6 +31,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
           } else {
             hotcueButtons.shift();
         }
+        }
         });
     }
 
