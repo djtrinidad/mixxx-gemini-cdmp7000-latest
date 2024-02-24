@@ -27,8 +27,13 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
     });
     }
-
-  
+ 
+  this.memoButtonPressed = function(value) {
+    if ((value == 0x90) && (CDMP7000.memoActive == false)) {
+      CDMP7000.memoActive = true;
+      midi.sendShortMsg(0x90,0x08,0x7F);
+    }
+  }
   
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
