@@ -29,12 +29,21 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     }
 
   this.memoButtonPressed = function(channel, control, value, status, group) {
-    const isShifted = (control === 0x08)
-    if (isShifted) {
-      midi.sendShortMsg(0x90,0x10,0x7F);
+    CDMP7000.leftDeck.concat(CDMP7000.hotcueButtons).forEach(
+            value ? function(module) { module.shift(); } : function(module) { module.unshift(); }
+        );
+
     }
   }
-
+/*
+  this.memoButtonPressed = function(channel, control, value, status, group) {
+    const isShifted = (control === 0x08)
+    if (isShifted) {
+      midi.sendShortMsg(0x90,0x08,0x7F);
+      CDMP7000.memoActive = true;
+    }
+  }
+*/
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
             // 'this' inside a function passed to reconnectComponents refers to the ComponentContainer
