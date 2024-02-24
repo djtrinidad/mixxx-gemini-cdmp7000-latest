@@ -28,9 +28,13 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     }
  
   this.memoButtonPressed = function (channel, control, value, status, group) {
-    const isShifted = (control == 0x08);
-    if (isShifted) {
+    const isShifted = (value == 0x7f);
+    if (isShifted && !CDMP7000.memoActive) {
       midi.sendShortMsg(0x90,0x08,0x7F);
+      CDMP7000.memoActive = true;
+    } else {
+      midi.sendShortMsg(0x90,0x08,0x0F);
+      CDMP7000.memoActive = false;
     }
   };
   
