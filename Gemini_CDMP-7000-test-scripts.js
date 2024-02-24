@@ -34,7 +34,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         );
 
     };
-  }
+  
 /*
   this.memoButtonPressed = function(channel, control, value, status, group) {
     const isShifted = (control === 0x08)
