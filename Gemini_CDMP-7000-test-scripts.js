@@ -28,15 +28,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     });
     }
 
-  this.memoButtonPressed = function(value) {
-    if ((value == 0x90) && (CDMP7000.memoActive == false)) {
-      CDMP7000.memoActive = true;
-      midi.sendShortMsg(0x90,0x08,0x7F);
-  } else if ((value == 0x90) && (CDMP7000.memoActive == true)) {
-      CDMP7000.memoActive = true;
-      midi.sendShortMsg(0x90,0x08,0x00); 
-    }
-  };
+  
   
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
