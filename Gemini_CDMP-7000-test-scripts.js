@@ -32,7 +32,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     const isShifted = (control === 0x08)
     if (isShifted) {
       midi.sendShortMsg(0x90,0x08,0x7F);
-      this.hotcueButtons.shift();
+      this.hotcueButtons[1].shift();
     }
   }
 
