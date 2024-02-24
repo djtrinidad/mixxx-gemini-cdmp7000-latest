@@ -27,9 +27,9 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
         input: function(channel, control, value, status, group) {
           if (this.isShifted) {
-            hotcueButtons.unshift();
+            this.hotcueButtons.unshift();
           } else {
-            hotcueButtons.shift();
+            this.hotcueButtons.shift();
           }
          }
         });
