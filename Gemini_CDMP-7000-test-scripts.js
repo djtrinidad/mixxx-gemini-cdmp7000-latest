@@ -1,5 +1,6 @@
 var CDMP7000 = {};
 
+CDMP7000.memoActive = false;
 
 CDMP7000.init = function() {
   
@@ -27,12 +28,12 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         });
     }
 
-  this.memoButton = new components.Button({
-    midi: [0x91, 0x01],
-    group: '[Channel1]',
-    key: 'touch_shift',
-    type: components.Button.prototype.types.toggle
-  });
+  this.memoButtonPressed = function(channel, control, value, status, group) {
+    const isShifted = (control === 0x08)
+    if (isShifted) {
+      midi.sendShortMsg(0x90,0x10,0x7F);
+    }
+  }
 
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
