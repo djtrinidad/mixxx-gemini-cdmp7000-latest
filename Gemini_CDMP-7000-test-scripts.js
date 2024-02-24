@@ -25,13 +25,6 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         this.hotcueButtons[i] = new components.HotcueButton({
             midi: [0x90, 0x04 + i],
             number: i,
-            input: function (channel, control, value, status, group) {
-             if (CDMP7000.memoActive = true) {
-                 this.hotcueButtons.unshift();
-             } else {
-                 this.hotcueButtons.shift();
-             }
-         },
     });
     }
   
@@ -40,6 +33,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     if (isShifted) {
       midi.sendShortMsg(0x90,0x08,0x7F);
       CDMP7000.memoActive = true;
+      this.hotcueButtons.shift();
     }
   }
 
