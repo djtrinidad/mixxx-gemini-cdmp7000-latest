@@ -1,11 +1,10 @@
 var CDMP7000 = {};
 
-CDMP7000.memoActive = false;
-
 CDMP7000.init = function() {
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
-
+  CDMP7000.memoActive = false;
+  
   CDMP7000.leftDeck.reconnectComponents();
 
 };
