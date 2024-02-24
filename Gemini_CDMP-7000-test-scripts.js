@@ -25,13 +25,14 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         this.hotcueButtons[i] = new components.HotcueButton({
             midi: [0x90, 0x04 + i],
             number: i,
-        input: function(channel, control, value, status, group) {
-          if (this.isShifted) {
-            this.hotcueButtons.unshift();
-          } else {
-            this.hotcueButtons.shift();
-          }
-         }
+            input: function(channel, control, value, status, group) {
+              components.HotCueButton.prototype.input.apply(this, arguments);
+              if (this.isShifted) {
+                engine.setValue("[Channel1]", "hotcue_" + i + "_clear", value);
+              } else {
+                engine.setValue("[Channel1]", "hotcue_" + i + "_activate", value);
+              } // end if
+            } // end input
         });
     }
 
