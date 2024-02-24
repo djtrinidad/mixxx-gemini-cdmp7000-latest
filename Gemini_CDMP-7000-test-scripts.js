@@ -27,18 +27,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
     });
     }
-  /* ADD the unshift next */
-  this.memoButtonPressed = function(channel, control, value, status, group) {
-    const isShifted = (control === 0x08)
-    if (isShifted) {
-      midi.sendShortMsg(0x90,0x08,0x7F);
-      CDMP7000.memoActive = true;
-      CDMP7000.leftDeck.hotcueButton[1].shift()
-      CDMP7000.leftDeck.hotcueButton[2].shift()
-      CDMP7000.leftDeck.hotcueButton[3].shift()
-    }
-  }
-
+  
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
             // 'this' inside a function passed to reconnectComponents refers to the ComponentContainer
@@ -51,3 +40,16 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 
 
 CDMP7000.Deck.prototype = new components.Deck();
+
+/* ADD the unshift next */
+  CDMP7000.Deck.prototype.memoButtonPressed = function(channel, control, value, status, group) {
+    const isShifted = (control === 0x08)
+    if (isShifted) {
+      midi.sendShortMsg(0x90,0x08,0x7F);
+      CDMP7000.memoActive = true;
+      CDMP7000.leftDeck.hotcueButton[1].shift()
+      CDMP7000.leftDeck.hotcueButton[2].shift()
+      CDMP7000.leftDeck.hotcueButton[3].shift()
+    }
+  }
+
