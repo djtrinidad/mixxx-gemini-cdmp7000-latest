@@ -25,17 +25,16 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         this.hotcueButtons[i] = new components.HotcueButton({
             midi: [0x90, 0x04 + i],
             number: i,
+        input: function(channel, control, value, status, group) {
+          if (this.isShifted) {
+            hotcueButtons.unshift();
+          } else {
+            hotcueButtons.shift();
+        }
         });
     }
 
-  this.memoButtonPressed = function(channel, control, value, status, group) {
-    CDMP7000.leftDeck.concat(CDMP7000.hotcueButtons).forEach(
-            value ? function(module) { module.shift(); } : function(module) { module.unshift(); }
-        );
-
-    };
   
-/*
   this.memoButtonPressed = function(channel, control, value, status, group) {
     const isShifted = (control === 0x08)
     if (isShifted) {
@@ -43,7 +42,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
       CDMP7000.memoActive = true;
     }
   }
-*/
+
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
             // 'this' inside a function passed to reconnectComponents refers to the ComponentContainer
