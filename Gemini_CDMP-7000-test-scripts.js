@@ -11,7 +11,7 @@ CDMP7000.init = function() {
 };
 
 CDMP7000.shutdown = function() {
-
+for (i=0x01; i<=0x60; i++) midi.sendShortMsg(0x90,i,0x00);  // Turn off all LEDs
 };
 
 CDMP7000.Deck = function (deckNumbers, midiChannel) {
@@ -27,6 +27,17 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
     });
     }
+  /* I'm allowing the shifted function to reset the active state, eliminating 
+  * having to press memo again to deactivate. But I'll also include press to 
+  * deactivate in case one changes their mind */
+  this.memoButtonPressed = function(value) {
+    if ((value == 0x90) && (CDMP7000.memoActive == false)) {
+      CDMP7000.memoActive = true;
+      midi.sendShortMsg(0x90,0x08,0x7F);
+  } else if ((value == 0x90) && (CDMP7000.memoActive == true)) {
+      CDMP7000.memoActive = true;
+      midi.sendShortMsg(0x90,0x08,0x00); 
+    }
   
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
@@ -40,16 +51,4 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 
 
 CDMP7000.Deck.prototype = new components.Deck();
-
-/* ADD the unshift next */
-  CDMP7000.Deck.prototype.memoButtonPressed = function(channel, control, value, status, group) {
-    const isShifted = (control === 0x08)
-    if (isShifted) {
-      midi.sendShortMsg(0x90,0x08,0x7F);
-      CDMP7000.memoActive = true;
-      CDMP7000.leftDeck.hotcueButton[1].shift()
-      CDMP7000.leftDeck.hotcueButton[2].shift()
-      CDMP7000.leftDeck.hotcueButton[3].shift()
-    }
-  }
 
