@@ -32,7 +32,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     if (isShifted && !CDMP7000.memoActive) {
       midi.sendShortMsg(0x90,0x08,0x7F);
       CDMP7000.memoActive = true;
-    } else {
+    } else if (isShifted && CDMP7000.memoActive) {
       midi.sendShortMsg(0x90,0x08,0x00);
       CDMP7000.memoActive = false;
     }
