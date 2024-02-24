@@ -27,12 +27,15 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
     });
     }
-  
+  /* ADD the unshift next */
   this.memoButtonPressed = function(channel, control, value, status, group) {
     const isShifted = (control === 0x08)
     if (isShifted) {
       midi.sendShortMsg(0x90,0x08,0x7F);
-      this.hotcueButtons[1].shift();
+      CDMP7000.memoActive = true;
+      CDMP7000.leftDeck.hotcueButton[1].shift()
+      CDMP7000.leftDeck.hotcueButton[2].shift()
+      CDMP7000.leftDeck.hotcueButton[3].shift()
     }
   }
 
