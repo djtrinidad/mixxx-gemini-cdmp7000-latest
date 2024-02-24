@@ -27,9 +27,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
     });
     }
-  /* I'm allowing the shifted function to reset the active state, eliminating 
-  * having to press memo again to deactivate. But I'll also include press to 
-  * deactivate in case one changes their mind */
+
   this.memoButtonPressed = function(value) {
     if ((value == 0x90) && (CDMP7000.memoActive == false)) {
       CDMP7000.memoActive = true;
@@ -38,7 +36,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
       CDMP7000.memoActive = true;
       midi.sendShortMsg(0x90,0x08,0x00); 
     }
-  }
+  };
   
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
