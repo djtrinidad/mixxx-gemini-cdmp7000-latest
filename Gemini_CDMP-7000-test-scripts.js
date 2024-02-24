@@ -26,7 +26,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             midi: [0x90, 0x04 + i],
             number: i,
             input: function (channel, control, value, status, group) {
-             if (this.isShifted) {
+             if (CDMP7000.memoActive = true) {
                  this.unshift();
              } else {
                  this.shift();
