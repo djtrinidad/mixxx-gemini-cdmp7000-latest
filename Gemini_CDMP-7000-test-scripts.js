@@ -33,7 +33,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
       midi.sendShortMsg(0x90,0x08,0x7F);
       CDMP7000.memoActive = true;
     } else {
-      midi.sendShortMsg(0x90,0x08,0x0F);
+      midi.sendShortMsg(0x90,0x08,0x00);
       CDMP7000.memoActive = false;
     }
   };
