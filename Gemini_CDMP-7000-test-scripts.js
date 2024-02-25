@@ -46,7 +46,8 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   */
   this.memoButton = new components.Button({
     midi: [0x91, 0x08],
-    group: '[Channel1]',
+    group: '[Controls]',
+    key: 'touch_shift',
     on: 0x7F,
     off: 0x00,
     input: function (channel, control, value, status, group) {
