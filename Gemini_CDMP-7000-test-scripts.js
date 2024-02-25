@@ -33,7 +33,6 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         CDMP7000.leftDeck.hotcueButtons[i].shift()
      } 
       CDMP7000.memoActive = 1;
-      midi.sendShortMsg(0x90,0x08,0x7F);
     } 
     
   };
