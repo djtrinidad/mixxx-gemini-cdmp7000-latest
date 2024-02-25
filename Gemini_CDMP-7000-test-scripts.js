@@ -39,7 +39,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
       midi.sendShortMsg(0x90, 0x0E, 0x00);
       vinylMode = 0;
     } // end elif
-  });
+  };
 
   this.jogWheel = new components.JogWheelBasic({
     leftDeck: 1,
