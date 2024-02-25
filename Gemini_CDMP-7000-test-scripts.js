@@ -28,6 +28,13 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     }
  
   this.memoButtonPressed = function (channel, control, value, status, group) {
+    if (value) {
+      CDMP7000.leftDeck.hotcueButtons.shift()
+      CDMP7000.leftDeck.hotcueButtons.shift = true;
+    } else {
+      CDMP7000.leftDeck.hotcueButtons.unshift()
+      CDMP7000.leftDeck.hotcueButtons.shift = false;
+    }
     
   };
   
