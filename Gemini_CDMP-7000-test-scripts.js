@@ -4,7 +4,7 @@ CDMP7000.init = function() {
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
   CDMP7000.memoActive = false;
-  CDMP7000.leftDeck.hotcueButtons.unshift()
+  CDMP7000.leftDeck.hotcueButtons[1].unshift()
   CDMP7000.leftDeck.reconnectComponents();
 
 };
