@@ -29,7 +29,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   });
 
   this.jogwheel = components.JogWheelBasic({
-    deck: 1,
+    leftDeck: 1,
     wheelResolution: 1000,
     alpha: 1/8,
     beta: 1/8/32,
