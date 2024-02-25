@@ -101,6 +101,8 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.loopIn = new components.Button({
     midi: [0x90, 0x10],
     key: "loop_in",
+    on: 0x7F,
+    off: 0x00
   });
 
   this.loopOut = new components.Button({
