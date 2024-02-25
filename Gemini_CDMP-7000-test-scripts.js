@@ -47,7 +47,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.memoButton = new components.Button({
     midi: [0x91, 0x08],
     group: '[Controls]',
-   // key: 'touch_shift',
+    key: 'touch_shift',
     input: function (channel, control, value, status, group) {
        if (value && CDMP7000.memoActive == 0) {
          for (let i = 1; i <= 3; i++) {
