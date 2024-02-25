@@ -4,7 +4,7 @@ CDMP7000.init = function() {
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
   CDMP7000.memoActive = false;
-  CDMP7000.leftDeck.hotcueButtons[1].unshift()
+  //CDMP7000.leftDeck.hotcueButtons[1].unshift()
   CDMP7000.leftDeck.reconnectComponents();
 
 };
@@ -29,12 +29,10 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
  
   this.memoButtonPressed = function (channel, control, value, status, group) {
     if (value) {
-      CDMP7000.leftDeck.hotcueButtons.shift()
-      CDMP7000.leftDeck.hotcueButtons.shift = true;
-    } else {
-      CDMP7000.leftDeck.hotcueButtons.unshift()
-      CDMP7000.leftDeck.hotcueButtons.shift = false;
-    }
+     for (i = 1; i <= 3; i++ {
+        CDMP7000.leftDeck.hotcueButtons[i].shift()
+     }
+    } 
     
   };
   
