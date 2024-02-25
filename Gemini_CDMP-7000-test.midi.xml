@@ -87,7 +87,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.memoButton</key>
+                <key>CDMP7000.leftDeck.memoButton.input</key>
                 <description>Memo</description>
                 <status>0x90</status>
                 <midino>0x08</midino>
