@@ -172,7 +172,7 @@
                 <status>0x90</status>
                 <midino>0x10</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -182,7 +182,7 @@
                 <status>0x90</status>
                 <midino>0x11</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -192,7 +192,7 @@
                 <status>0x90</status>
                 <midino>0x12</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>  <!-- FIX: Does Mixxx support bpm modes? Tap for bpm for now -->
