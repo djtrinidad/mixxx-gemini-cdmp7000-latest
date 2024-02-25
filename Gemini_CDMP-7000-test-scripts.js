@@ -3,7 +3,7 @@ var CDMP7000 = {};
 CDMP7000.init = function() {
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
-  CDMP7000.memoActive = false;
+  CDMP7000.memoActive = 0;
   //CDMP7000.leftDeck.hotcueButtons[1].unshift()
   CDMP7000.leftDeck.reconnectComponents();
 
@@ -28,12 +28,13 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     }
  
   this.memoButtonPressed = function (channel, control, value, status, group) {
-    if (value) {
-     for (i = 1; i <= 3; i++ {
+    if (value && CDMP7000.memoActive == 0) {
+     for (i = 1; i <= 3; i++) {
         CDMP7000.leftDeck.hotcueButtons[i].shift()
-     }
+     }    
     } 
-    
+    CDMP7000.memoActive = 1;
+    midi.SendShortMsg(0x90, 0x08, 0x7f);
   };
   
   this.reconnectComponents(function (c) {
