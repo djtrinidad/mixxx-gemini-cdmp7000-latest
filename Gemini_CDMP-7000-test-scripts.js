@@ -31,9 +31,9 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.jogwheel = components.JogWheelBasic({
     deck: 1,
     wheelResolution: 1000,
-    alpha: 1/8
-    beta: 1/8/32
-    rpm: 33 + 1/3
+    alpha: 1/8,
+    beta: 1/8/32,
+    rpm: 33 + 1/3,
 });
 // ================= Hotcue / Memo Button Section ================== //
   
