@@ -63,6 +63,8 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
          }  
          CDMP7000.memoActive = 0;
        } //endif
+        this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
+        components.Button.prototype.input.apply(this, arguments);
     }, // end input
    });
 
