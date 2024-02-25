@@ -28,7 +28,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     type: components.Button.prototype.types.toggle,
   });
 
-  this.jogwheel = components.JogWheelBasic({
+  this.jogWheel = new components.JogWheelBasic({
     leftDeck: 1,
     wheelResolution: 1000,
     alpha: 1/8,
