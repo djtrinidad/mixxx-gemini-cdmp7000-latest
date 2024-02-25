@@ -110,7 +110,7 @@
                 <key>fwd</key>
                 <description>Track Search Forward</description>
                 <status>0x90</status>
-                <midino>0x10</midino>
+                <midino>0x0A</midino>
                 <options>
                     <normal/>
                 </options>
@@ -120,7 +120,7 @@
                 <key>MoveUp</key>
                 <description>Browse Left</description>
                 <status>0x90</status>
-                <midino>0x11</midino>
+                <midino>0x0B</midino>
                 <options>
                     <SelectKnob/>
                 </options>
@@ -130,7 +130,7 @@
                 <key>MoveDown</key>
                 <description>Browse Right</description>
                 <status>0x90</status>
-                <midino>0x12</midino>
+                <midino>0x0C</midino>
                 <options>
                     <SelectKnob/>
                 </options>
@@ -140,7 +140,7 @@
                 <key>sync_leader</key>
                 <description>Master Tempo</description>
                 <status>0x90</status>
-                <midino>0x13</midino>
+                <midino>0x0D</midino>
                 <options>
                     <normal/>
                 </options>
@@ -150,7 +150,7 @@
                 <key>CDMP7000.leftDeck.jogWheel.vinylMode</key>
                 <description>Vinyl Mode</description>
                 <status>0x90</status>
-                <midino>0x14</midino>
+                <midino>0x0E</midino>
                 <options>
                     <normal/>
                 </options>
@@ -160,7 +160,7 @@
                 <key>LoadSelectedTrack</key>
                 <description>Select</description>
                 <status>0x90</status>
-                <midino>0x15</midino>
+                <midino>0x0F</midino>
                 <options>
                     <normal/>
                 </options>
@@ -170,7 +170,7 @@
                 <key>CDMP7000.leftDeck.loopIn</key>
                 <description>Loop In</description>
                 <status>0x90</status>
-                <midino>0x16</midino>
+                <midino>0x10</midino>
                 <options>
                     <normal/>
                 </options>
@@ -180,7 +180,7 @@
                 <key>CDMP7000.leftDeck.loopOut</key>
                 <description>Loop Out/Adjust</description>
                 <status>0x90</status>
-                <midino>0x17</midino>
+                <midino>0x11</midino>
                 <options>
                     <normal/>
                 </options>
@@ -190,7 +190,7 @@
                 <key>CDMP7000.leftDeck.reloopExit</key>
                 <description>Reloop/Exit</description>
                 <status>0x90</status>
-                <midino>0x18</midino>
+                <midino>0x12</midino>
                 <options>
                     <normal/>
                 </options>
@@ -200,7 +200,7 @@
                 <key>bpm_tap</key>
                 <description>BPM Mode/Manual</description>
                 <status>0x90</status>
-                <midino>0x19</midino>
+                <midino>0x13</midino>
                 <options>
                     <normal/>
                 </options>
@@ -210,7 +210,7 @@
                 <key>enabled</key>
                 <description>Effect 1</description>
                 <status>0x90</status>
-                <midino>0x20</midino>
+                <midino>0x14</midino>
                 <options>
                     <normal/>
                 </options>
@@ -220,7 +220,7 @@
                 <key>enabled</key>
                 <description>Effect 2</description>
                 <status>0x90</status>
-                <midino>0x21</midino>
+                <midino>0x15</midino>
                 <options>
                     <normal/>
                 </options>
@@ -230,7 +230,7 @@
                 <key>enabled</key>
                 <description>Effect 3</description>
                 <status>0x90</status>
-                <midino>0x22</midino>
+                <midino>0x16</midino>
                 <options>
                     <normal/>
                 </options>
@@ -240,7 +240,7 @@
                 <key>MoveFocusBackward</key>
                 <description>Back</description>
                 <status>0x90</status>
-                <midino>0x23</midino>
+                <midino>0x17</midino>
                 <options>
                     <normal/>
                 </options>
@@ -250,7 +250,7 @@
                 <key>CDMP7000.leftDeck.jogWheel.inputTouch</key>
                 <description>Wheel Touch</description>
                 <status>0x90</status>
-                <midino>0x24</midino>
+                <midino>0x18</midino>
                 <options>
                     <normal/>
                 </options>
@@ -270,7 +270,7 @@
                 <key>ShowDurationRemaining</key>
                 <description>Time Elapsed/Remaining</description>
                 <status>0x90</status>
-                <midino>0x26</midino>
+                <midino>0x1A</midino>
                 <options>
                     <normal/>
                 </options>
@@ -280,7 +280,7 @@
                 <key></key>
                 <description>Auto Cue</description>
                 <status>0x90</status>
-                <midino>0x27</midino>
+                <midino>0x1B</midino>
                 <options>
                     <normal/>
                 </options>
@@ -290,7 +290,7 @@
                 <key></key>
                 <description>LOCK</description>
                 <status>0x90</status>
-                <midino>0x28</midino>
+                <midino>0x1C</midino>
                 <options>
                     <normal/>
                 </options>
@@ -300,7 +300,7 @@
                 <key>rateRange</key>
                 <description>Range</description>
                 <status>0x90</status>
-                <midino>0x29</midino>
+                <midino>0x1D</midino>
                 <options>
                     <normal/>
                 </options>
@@ -310,7 +310,7 @@
                 <key>reverse</key>
                 <description>Reverse</description>
                 <status>0x90</status>
-                <midino>0x30</midino>
+                <midino>0x1E</midino>
                 <options>
                     <normal/>
                 </options>
@@ -320,7 +320,7 @@
                 <key>slip_enabled</key>
                 <description>Slip</description>
                 <status>0x90</status>
-                <midino>0x31</midino>
+                <midino>0x1F</midino>
                 <options>
                     <normal/>
                 </options>
@@ -330,9 +330,9 @@
                 <key>CDMP7000.leftDeck.jogWheel.inputWheel</key>
                 <description>Jogwheel Turn</description>
                 <status>0x90</status>
-                <midino>0x32</midino>
+                <midino>0x20</midino>
                 <options>
-                    <normal/>
+                    <Rot64/>
                 </options>
             </control>
             <control> <!-- FIX: probably need to invert this -->
@@ -340,9 +340,9 @@
                 <key>rate</key>
                 <description>Pitch Slider</description>
                 <status>0x90</status>
-                <midino>0x33</midino>
+                <midino>0x21</midino>
                 <options>
-                    <normal/>
+                    <fourteen-bit-lsb/>
                 </options>
             </control>
             <control> <!-- FIX: needs a purpose, no fitting Mixxx control -->
@@ -350,7 +350,7 @@
                 <key></key>
                 <description>Track Skip Prev</description>
                 <status>0x90</status>
-                <midino>0x34</midino>
+                <midino>0x22</midino>
                 <options>
                     <normal/>
                 </options>
@@ -360,7 +360,7 @@
                 <key></key>
                 <description>Track Skip Next</description>
                 <status>0x90</status>
-                <midino>0x35</midino>
+                <midino>0x23</midino>
                 <options>
                     <normal/>
                 </options>
@@ -370,7 +370,7 @@
                 <key></key>
                 <description>Hold</description>
                 <status>0x90</status>
-                <midino>0x36</midino>
+                <midino>0x24</midino>
                 <options>
                     <normal/>
                 </options>
@@ -380,7 +380,7 @@
                 <key>eject</key>
                 <description>Eject</description>
                 <status>0x90</status>
-                <midino>0x37</midino>
+                <midino>0x25</midino>
                 <options>
                     <normal/>
                 </options>
@@ -390,7 +390,7 @@
                 <key></key>
                 <description>Effect 4</description>
                 <status>0x90</status>
-                <midino>0x38</midino>
+                <midino></midino>
                 <options>
                     <normal/>
                 </options>
@@ -400,7 +400,7 @@
                 <key></key>
                 <description>Effect 5</description>
                 <status>0x90</status>
-                <midino>0x39</midino>
+                <midino></midino>
                 <options>
                     <normal/>
                 </options>
@@ -410,7 +410,7 @@
                 <key></key>
                 <description>Effect 6</description>
                 <status>0x90</status>
-                <midino>0x40</midino>
+                <midino></midino>
                 <options>
                     <normal/>
                 </options>
@@ -420,7 +420,7 @@
                 <key>mix</key>
                 <description>Dry/Wet</description>
                 <status>0x90</status>
-                <midino>0x41</midino>
+                <midino>0x29</midino>
                 <options>
                     <normal/>
                 </options>
@@ -430,7 +430,7 @@
                 <key></key>
                 <description>Start Time</description>
                 <status>0x90</status>
-                <midino>0x42</midino>
+                <midino>0x2A</midino>
                 <options>
                     <normal/>
                 </options>
@@ -440,7 +440,7 @@
                 <key></key>
                 <description>Stop Time</description>
                 <status>0x90</status>
-                <midino>0x43</midino>
+                <midino>0x2B</midino>
                 <options>
                     <normal/>
                 </options>
