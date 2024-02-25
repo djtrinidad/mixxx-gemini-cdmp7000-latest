@@ -147,7 +147,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key></key>
+                <key>CDMP7000.leftDeck.jogWheel.vinylMode</key>
                 <description>Vinyl Mode</description>
                 <status>0x90</status>
                 <midino>0x14</midino>
@@ -167,7 +167,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>loop_in</key>
+                <key>CDMP7000.leftDeck.loopIn</key>
                 <description>Loop In</description>
                 <status>0x90</status>
                 <midino>0x16</midino>
@@ -177,7 +177,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>loop_out</key>
+                <key>CDMP7000.leftDeck.loopOut</key>
                 <description>Loop Out/Adjust</description>
                 <status>0x90</status>
                 <midino>0x17</midino>
@@ -187,7 +187,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>reloop_exit</key>
+                <key>CDMP7000.leftDeck.reloopExit</key>
                 <description>Reloop/Exit</description>
                 <status>0x90</status>
                 <midino>0x18</midino>
