@@ -50,7 +50,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     on: 0x7F,
     off: 0x00,
     input: function (channel, control, value, status, group) {
-       if (value === 1) {
+       if (value) {
          for (let i = 1; i <= 3; i++) {
            CDMP7000.leftDeck.hotcueButtons[i].shift()
          }
