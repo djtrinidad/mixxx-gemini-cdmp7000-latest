@@ -44,33 +44,10 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     
   };
   */
-  /* this works but let's make it deck agnostic */
-  /*
   this.memoButton = new components.Button({
     midi: [0x91, 0x08],
     group: '[Controls]',
-    key: 'touch_shift',
-    input: function (channel, control, value, status, group) {
-       if (value && CDMP7000.memoActive == 0) {
-         for (let i = 1; i <= 3; i++) {
-           CDMP7000.leftDeck.hotcueButtons[i].shift()
-         }
-         midi.sendShortMsg(0x90,0x08,0x7F);
-         CDMP7000.memoActive = 1;
-       } else if (value && CDMP7000.memoActive == 1) {
-         for (let i = 1; i <= 3; i++) {
-           CDMP7000.leftDeck.hotcueButtons[i].unshift()
-         }
-         midi.sendShortMsg(0x90,0x08,0x00);
-         CDMP7000.memoActive = 0;
-       } //endif
-    }, // end input
-   });
-  */
-  this.memoButton = new components.Button({
-    midi: [0x91, 0x08],
-    group: '[Controls]',
-    key: 'touch_shift',
+   // key: 'touch_shift',
     input: function (channel, control, value, status, group) {
        if (value && CDMP7000.memoActive == 0) {
          for (let i = 1; i <= 3; i++) {
