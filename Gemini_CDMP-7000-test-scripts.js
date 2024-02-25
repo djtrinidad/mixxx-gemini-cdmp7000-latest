@@ -31,10 +31,11 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     if (value && CDMP7000.memoActive == 0) {
      for (let i = 1; i <= 3; i++) {
         CDMP7000.leftDeck.hotcueButtons[i].shift()
-     }    
+     } 
+      CDMP7000.memoActive = 1;
+      midi.sendShortMsg(0x90,0x08,0x7F);
     } 
-    CDMP7000.memoActive = 1;
-    midi.SendShortMsg(0x90, 0x08, 0x7f);
+    
   };
   
   this.reconnectComponents(function (c) {
