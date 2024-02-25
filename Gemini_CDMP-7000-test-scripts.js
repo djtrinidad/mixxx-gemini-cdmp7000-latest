@@ -23,7 +23,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 
 // =================   Slip / Vinyl / Jogwheel    ================== //
   this.slipModeButton = new components.Button({
-    midi: [0x90, 0x31],
+    midi: [0x90, 0x1F],
     key: "slip_enabled",
     type: components.Button.prototype.types.toggle,
   });
@@ -86,17 +86,17 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   // ====================== Loop Section ==================== //
   
   this.loopIn = new components.Button({
-    midi: [0x90, 0x16],
+    midi: [0x90, 0x10],
     key: "loop_in",
   });
 
   this.loopOut = new components.Button({
-    midi: [0x90, 0x17],
+    midi: [0x90, 0x11],
     key: "loop_out",
   });
 
   this.reloopExit = new components.Button({
-    midi: [0x90, 0x18],
+    midi: [0x90, 0x12],
     key: "reloop_exit",
   });
   
