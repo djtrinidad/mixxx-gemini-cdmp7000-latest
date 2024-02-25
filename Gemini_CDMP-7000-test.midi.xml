@@ -167,7 +167,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.loopIn</key>
+                <key>CDMP7000.leftDeck.loopIn.input</key>
                 <description>Loop In</description>
                 <status>0x90</status>
                 <midino>0x10</midino>
@@ -177,7 +177,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.loopOut</key>
+                <key>CDMP7000.leftDeck.loopOut.input</key>
                 <description>Loop Out/Adjust</description>
                 <status>0x90</status>
                 <midino>0x11</midino>
@@ -187,7 +187,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.reloopExit</key>
+                <key>CDMP7000.leftDeck.reloopExit.input</key>
                 <description>Reloop/Exit</description>
                 <status>0x90</status>
                 <midino>0x12</midino>
