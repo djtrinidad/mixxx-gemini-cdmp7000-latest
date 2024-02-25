@@ -50,17 +50,11 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     on: 0x7F,
     off: 0x00,
     input: function (channel, control, value, status, group) {
-       if (value === 1 && CDMP7000.memoActive == 0) {
+       if (value === 1) {
          for (let i = 1; i <= 3; i++) {
            CDMP7000.leftDeck.hotcueButtons[i].shift()
          }
-         CDMP7000.memoActive = 1;
-       } else if (value === 1 && CDMP7000.memoActive == 1) {
-         for (let i = 1; i <= 3; i++) {
-           CDMP7000.leftDeck.hotcueButtons[i].unshift()
-         }
-         CDMP7000.memoActive = 0;
-       } // end elif
+       } 
     }, // end input
    });
 
