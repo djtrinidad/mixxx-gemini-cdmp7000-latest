@@ -26,7 +26,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
     });
     }
- 
+ /* This works, but trying with button components, and custom input 
   this.memoButtonPressed = function (channel, control, value, status, group) {
     if (value && CDMP7000.memoActive == 0) {
      for (let i = 1; i <= 3; i++) {
@@ -43,7 +43,27 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     }
     
   };
-  
+  */
+  this.memoButton = new components.Button({
+    midi: [0x91, 0x08],
+    group: '[Channel1]'
+    on: 0x7F,
+    off: 0x00,
+    input: function (channel, control, value, status, group) {
+       if (value === 1 && CDMP7000.memoActive == 0) {
+         for (let i = 1; i <= 3; i++) {
+           CDMP7000.leftDeck.hotcueButtons[i].shift()
+         }
+         CDMP7000.memoActive = 1;
+       } else if (value === 1 && CDMP7000.memoActive == 1) {
+         for (let i = 1; i <= 3; i++) {
+           CDMP7000.leftDeck.hotcueButtons[i].unshift()
+         }
+         CDMP7000.memoActive = 0;
+       } // end elif
+    } // end input
+   });
+
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
             // 'this' inside a function passed to reconnectComponents refers to the ComponentContainer
