@@ -152,7 +152,7 @@
                 <status>0x90</status>
                 <midino>0x0E</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -252,7 +252,7 @@
                 <status>0x90</status>
                 <midino>0x18</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control> <!-- FIX: need to script this, to affect active effect -->
@@ -332,7 +332,7 @@
                 <status>0x90</status>
                 <midino>0x20</midino>
                 <options>
-                    <Rot64/>
+                    <script-binding/>
                 </options>
             </control>
             <control> <!-- FIX: probably need to invert this -->
