@@ -7,7 +7,7 @@ CDMP7000.init = function() {
   CDMP7000.vinylModeOn = 0;
   CDMP7000.leftDeck.reconnectComponents();
   for (let i = 1; i <= 60; i++) {
-    midi.sendShortMsg(0x90,0x00 + 1; 0x7F)
+    midi.sendShortMsg(0x90,0x00 + 1; 0x7F);
   }
 };
 
