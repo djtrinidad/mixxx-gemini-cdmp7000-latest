@@ -1,3 +1,5 @@
+// ver 1
+
 var CDMP7000 = {};
 
 CDMP7000.init = function() {
@@ -16,8 +18,8 @@ for (i=0x01; i<=0x60; i++) midi.sendShortMsg(0x90,i,0x00);  // Turn off all LEDs
 CDMP7000.Deck = function (deckNumbers, midiChannel) {
   components.Deck.call(this, deckNumbers);
   
- /* this.playButton = new components.PlayButton([0x90 + midiChannel, 0x01]); */
 // =================       Transport            ==================== //
+  
   this.cueButton = new components.CueButton([0x90, 0x01]);
   this.playButton = new components.PlayButton([0x90, 0x02]);
   //this.sync
@@ -29,6 +31,12 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     type: components.Button.prototype.types.toggle,
   });
 
+  this.vinylModeButton = new components.Button({
+    midi: [0x90, 0x1F],
+    key: "slip_enabled",
+    type: components.Button.prototype.types.toggle,
+  });
+  /* this works, but trying as a button
   this.vinylModeButton = function (channel, control, value, status, group) {
     if (value && CDMP7000.vinylModeOn == 0) {
       CDMP7000.leftDeck.jogWheel.vinylMode = true;
@@ -40,7 +48,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
       CDMP7000.vinylModeOn = 0;
     } // end elif
   };
-  
+  */
   this.jogWheel = new components.JogWheelBasic({
     deck: 1,
     wheelResolution: 1000,
@@ -103,6 +111,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     key: "loop_in",
     on: 0x7F,
     off: 0x00,
+    type: components.Button.prototype.types.push,
   });
 
   this.loopOut = new components.Button({
