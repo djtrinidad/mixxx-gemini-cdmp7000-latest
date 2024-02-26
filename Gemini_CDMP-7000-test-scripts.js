@@ -30,11 +30,11 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   });
 
   this.vinylModeButton = function (channel, control, value, status, group) {
-    if (value && CDMP.vinylModeOn == 0) {
+    if (value && CDMP7000.vinylModeOn == 0) {
       CDMP7000.leftDeck.jogWheel.vinylMode = true;
       midi.sendShortMsg(0x90, 0x0E, 0x7F);
       CDMP7000.vinylMode = 1;
-    } else if (value && CDMP.vinylModeOn == 1) {
+    } else if (value && CDMP7000.vinylModeOn == 1) {
       CDMP7000.leftDeck.jogWheel.vinylMode = false;
       midi.sendShortMsg(0x90, 0x0E, 0x00);
       CDMP7000.vinylMode = 0;
