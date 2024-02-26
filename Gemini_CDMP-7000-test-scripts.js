@@ -28,7 +28,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     key: "slip_enabled",
     type: components.Button.prototype.types.toggle,
   });
-
+  /* This works, but trying button type
   this.vinylModeButton = function (channel, control, value, status, group) {
     if (value && CDMP7000.vinylModeOn == 0) {
       CDMP7000.leftDeck.jogWheel.vinylMode = true;
@@ -40,7 +40,15 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
       CDMP7000.vinylModeOn = 0;
     } // end elif
   };
-
+  */
+  this.vinylModeButton = new components.Button({
+    midi: [0x90, 0x0E],
+    key: "CDMP7000.vinylModeOn",
+    on: 0x7F,
+    off: 0x00,
+    type: components.Button.prototype.types.toggle,
+  });
+  
   this.jogWheel = new components.JogWheelBasic({
     deck: 1,
     wheelResolution: 1000,
