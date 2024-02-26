@@ -33,16 +33,16 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     if (value && vinylModeOn == 0) {
       CDMP7000.leftDeck.jogWheel.vinylMode = true;
       midi.sendShortMsg(0x90, 0x0E, 0x7F);
-      vinylMode = 1;
+      CDMP7000.vinylMode = 1;
     } else if (value && vinylModeOn == 1) {
       CDMP7000.leftDeck.jogWheel.vinylMode = false;
       midi.sendShortMsg(0x90, 0x0E, 0x00);
-      vinylMode = 0;
+      CDMP7000.vinylMode = 0;
     } // end elif
   };
 
   this.jogWheel = new components.JogWheelBasic({
-    leftDeck: 1,
+    Deck: 1,
     wheelResolution: 1000,
     alpha: 1/8,
     beta: 1/8/32,
@@ -102,7 +102,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     midi: [0x90, 0x10],
     key: "loop_in",
     on: 0x7F,
-    off: 0x00
+    off: 0x00,
   });
 
   this.loopOut = new components.Button({
