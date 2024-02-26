@@ -43,7 +43,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   */
   this.vinylModeButton = new components.Button({
     midi: [0x90, 0x0E],
-    key: "CDMP7000.vinylModeOn",
+    key: "CDMP7000.leftDeck.jogWheel.vinylMode",
     on: 0x7F,
     off: 0x00,
     type: components.Button.prototype.types.toggle,
