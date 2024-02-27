@@ -8,7 +8,7 @@ CDMP7000.init = function() {
   CDMP7000.memoActive = 0;
   CDMP7000.vinylModeOn = 0;
   CDMP7000.leftDeck.reconnectComponents();
-  
+  for (i=0x01; i<=0x60; i++) midi.sendShortMsg(0x90,i,0x7F);  // Turn on all LEDs
 };
 
 CDMP7000.shutdown = function() {
