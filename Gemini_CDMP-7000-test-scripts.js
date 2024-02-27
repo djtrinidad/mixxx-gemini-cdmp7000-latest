@@ -104,26 +104,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     }, // end input
    });
 
-  // ====================== Loop Section ==================== //
-  
-  this.loopIn = new components.Button({
-    midi: [0x90, 0x10],
-    key: "loop_in",
-    on: 0x7F,
-    off: 0x00,
-    type: components.Button.prototype.types.push,
-  });
-
-  this.loopOut = new components.Button({
-    midi: [0x90, 0x11],
-    key: "loop_out",
-  });
-
-  this.reloopExit = new components.Button({
-    midi: [0x90, 0x12],
-    key: "reloop_exit",
-  });
-  
+    
   this.reconnectComponents(function (c) {
         if (c.group === undefined) {
             // 'this' inside a function passed to reconnectComponents refers to the ComponentContainer
