@@ -2,13 +2,18 @@
 
 var CDMP7000 = {};
 
+CDMP7000.sysex = [0xF0, 0x7D, 0x01];  // pre-amble for all sysex display messages
+
+
 CDMP7000.init = function() {
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
   CDMP7000.memoActive = 0;
   CDMP7000.vinylModeOn = 0;
   CDMP7000.leftDeck.reconnectComponents();
-  for (i=0x01; i<=0x60; i++) midi.sendShortMsg(0x90,i,0x7F);  // Turn on all LEDs
+  midi.sendSysexMsg(CDMP7000.sysex.concat([0x3C, 0x62, 0x79, 0x65, 0x3E, 0xF7]),9);
+  message = "<artist><title>MIXXX - Welcome DJ<album><genre><length>20<index>0";
+  midi.sendSysexMsg(CDMP7000.sysex.concat(message.toInt(), 0xF7),4+message.length);   // sendto lcd song name slot
 };
 
 CDMP7000.shutdown = function() {
