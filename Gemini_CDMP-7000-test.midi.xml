@@ -446,28 +446,6 @@
                 </options>
             </control>
         </controls>
-        <outputs>
-            <output>
-                <group>[Channel1]</group>
-                <key>loop_in</key>
-                <status>0x90</status>
-                <midino>0x10</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>loop_out</key>
-                <status>0x90</status>
-                <midino>0x11</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>reloop_exit</key>
-                <status>0x90</status>
-                <midino>0x12</midino>
-                <minimum>0.1</minimum>
-            </output>
-        </outputs>
+        <outputs/>
     </controller>
 </MixxxControllerPreset>
