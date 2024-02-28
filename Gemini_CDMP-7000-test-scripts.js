@@ -64,7 +64,8 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     input: function (channel, control, value, status, group) {
       if (value) {
         midi.sendShortMsg(0x90, 0x10, 0x7F);
-      } //end if
+      } // end if
+    },
   });
 
   this.loopOut = new components.Button({
