@@ -167,32 +167,32 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.loopIn.input</key>
+                <key>loop_in</key>
                 <description>Loop In</description>
                 <status>0x90</status>
                 <midino>0x10</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.loopOut.input</key>
+                <key>loop_out</key>
                 <description>Loop Out/Adjust</description>
                 <status>0x90</status>
                 <midino>0x11</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.reloopExit.input</key>
-                <description>Reloop/Exit</description>
+                <key>reloop_exit</key>
+                <description>Reloop Exit</description>
                 <status>0x90</status>
                 <midino>0x12</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>  <!-- FIX: Does Mixxx support bpm modes? Tap for bpm for now -->
@@ -446,5 +446,28 @@
                 </options>
             </control>
         </controls>
+        <outputs>
+            <output>
+                <group>[Channel1]</group>
+                <key>loop_in</key>
+                <status>0x90</status>
+                <midino>0x10</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>loop_out</key>
+                <status>0x90</status>
+                <midino>0x11</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>reloop_exit</key>
+                <status>0x90</status>
+                <midino>0x12</midino>
+                <minimum>0.1</minimum>
+            </output>
+        </outputs>
     </controller>
 </MixxxControllerPreset>
