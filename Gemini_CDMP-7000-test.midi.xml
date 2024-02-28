@@ -339,10 +339,10 @@
                 <group>[Channel1]</group>
                 <key>rate</key>
                 <description>Pitch Slider</description>
-                <status>0x90</status>
+                <status>0xB0</status>
                 <midino>0x21</midino>
                 <options>
-                    <fourteen-bit-lsb/>
+                    <invert/>
                 </options>
             </control>
             <control> <!-- FIX: needs a purpose, no fitting Mixxx control -->
