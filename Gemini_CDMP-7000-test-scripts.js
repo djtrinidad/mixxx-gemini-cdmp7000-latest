@@ -61,10 +61,11 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.loopIn = new components.Button({
     midi: [0x90, 0x1F],
     key: "loop_in",
+    on: 127,
+    off: 0,
     input: function (channel, control, value, status, group) {
-      if (value) {
-        midi.sendShortMsg(0x90, 0x10, 0x7F);
-      } // end if
+          this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
+            components.Button.prototype.input.apply(this, arguments);
     },
   });
 
