@@ -37,12 +37,10 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   });
 
   this.vinylModeButton = function (channel, control, value, status, group) {
-    if (value && CDMP7000.vinylModeOn == 0) {
-      CDMP7000.leftDeck.jogWheel.vinylMode = true;
+    if (value) {
       midi.sendShortMsg(0x90, 0x0E, 0x7F);
-      CDMP7000.vinylModeOn = 1;
+      this.inSetValue(true);
     } else if (value && CDMP7000.vinylModeOn == 1) {
-      CDMP7000.leftDeck.jogWheel.vinylMode = false;
       midi.sendShortMsg(0x90, 0x0E, 0x00);
       CDMP7000.vinylModeOn = 0;
     } // end elif
@@ -56,6 +54,26 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     rpm: 33 + 1/3,
 });
 
+  this.wheelTouch = function (channel, control, value, status, group) {
+    var deckNumber = script.deckFromGroup(group);
+    if ((status & 0xF0) === 0x90) {
+      var alpha = 1.0/8;
+      var beta = alpha/32;
+      engine.scratchEnable(deckNumber, 128, 33+1/3, alpha,beta);
+    } else {
+            engine.scratchDisable(deckNumber);
+    }
+  };
+
+  this.wheelTurn = function (channel, control, value, status, group) {
+    var deckNumber = script.deckFromGroup(group);
+    var newValue=(value-64);
+    if (!engine.isScratching(deckNumber)) {
+       engine.setValue(group, "jog", newValue);
+       return;
+    }
+    engine.scratchTick(deckNumber,newValue);
+  };
 
 // ================= Loop IN/Loop Out/Reloop/Exit ================== //
 
