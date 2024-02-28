@@ -56,6 +56,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     rpm: 33 + 1/3,
 });
 
+
 // ================= Loop IN/Loop Out/Reloop/Exit ================== //
 
   this.loopIn = new components.Button({
