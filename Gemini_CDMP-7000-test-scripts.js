@@ -84,11 +84,15 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     key: "reloop_exit",
     output: function(value, _group, _control) {
       if (engine.getValue("[Channel1]", "loop_enabled") == 0) {
-        midi.sendShortMsg(0x90, 0x10, 0x00);
-        midi.sendShortMsg(0x90, 0x11, 0x00);
+      //  midi.sendShortMsg(0x90, 0x10, 0x00);
+        engine.setValue(group, "loop_in", false);
+      //  midi.sendShortMsg(0x90, 0x11, 0x00);
+        engine.setValue(group, "loop_out", false);
       } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
-        midi.sendShortMsg(0x90, 0x10, 0x7F);
-        midi.sendShortMsg(0x90, 0x11, 0x7F);
+      //  midi.sendShortMsg(0x90, 0x10, 0x7F);
+        engine.setValue(group, "loop_in", true);
+      //  midi.sendShortMsg(0x90, 0x11, 0x7F);
+        engine.setValue(group, "loop_out", true);
       }
     }
   });
