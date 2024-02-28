@@ -49,7 +49,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   };
   
   this.jogWheel = new components.JogWheelBasic({
-    deck: 1,
+    Deck: 1,
     wheelResolution: 1000,
     alpha: 1/8,
     beta: 1/8/32,
@@ -79,19 +79,16 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     } // end input
   });
 
+  /* replaced midi.sendShortMsg with engine.SetValue */
   this.reloopExit = new components.Button({
     midi: [0x90, 0x12],
     key: "reloop_exit",
     output: function(value, group, _control) {
       if (engine.getValue("[Channel1]", "loop_enabled") == 0) {
-      //  midi.sendShortMsg(0x90, 0x10, 0x00);
         engine.setValue(group, "loop_in", false);
-      //  midi.sendShortMsg(0x90, 0x11, 0x00);
         engine.setValue(group, "loop_out", false);
       } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
-      //  midi.sendShortMsg(0x90, 0x10, 0x7F);
         engine.setValue(group, "loop_in", true);
-      //  midi.sendShortMsg(0x90, 0x11, 0x7F);
         engine.setValue(group, "loop_out", true);
       }
     }
@@ -107,24 +104,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
             number: i,
     });
     }
- /* This works, but trying with button components, and custom input 
-  this.memoButtonPressed = function (channel, control, value, status, group) {
-    if (value && CDMP7000.memoActive == 0) {
-     for (let i = 1; i <= 3; i++) {
-        CDMP7000.leftDeck.hotcueButtons[i].shift()
-     } 
-      midi.sendShortMsg(0x90,0x08,0x7F);
-      CDMP7000.memoActive = 1;
-    } else if (value && CDMP7000.memoActive == 1) {
-     for (let i = 1; i <= 3; i++) {
-        CDMP7000.leftDeck.hotcueButtons[i].unshift()
-     } 
-      midi.sendShortMsg(0x90,0x08,0x00);
-      CDMP7000.memoActive = 0;
-    }
-    
-  };
-  */
+ 
   this.memoButton = new components.Button({
     midi: [0x91, 0x08],
     group: '[Controls]',
