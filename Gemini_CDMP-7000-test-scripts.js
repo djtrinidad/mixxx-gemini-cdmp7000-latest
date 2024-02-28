@@ -59,23 +59,22 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 // ================= Loop IN/Loop Out/Reloop/Exit ================== //
 
   this.loopIn = new components.Button({
-    midi: [0x90, 0x1F],
+    midi: [0x90, 0x10],
     key: "loop_in",
-    on: 127,
-    off: 0,
     input: function (channel, control, value, status, group) {
-          this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
-            components.Button.prototype.input.apply(this, arguments);
-    },
+       if (value) {
+         this.setValue(true);
+       } // end if
+    } // end input
   });
 
   this.loopOut = new components.Button({
-    midi: [0x90, 0x1F],
+    midi: [0x90, 0x11],
     key: "loop_out",
   });
 
   this.reloopExit = new components.Button({
-    midi: [0x90, 0x1F],
+    midi: [0x90, 0x12],
     key: "reloop_exit",
   });
   
@@ -139,6 +138,6 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   
 }
 
-
 CDMP7000.Deck.prototype = new components.Deck();
+
 
