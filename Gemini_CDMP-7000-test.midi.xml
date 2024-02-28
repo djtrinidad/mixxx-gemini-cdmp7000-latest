@@ -329,7 +329,7 @@
                 <group>[Channel1]</group>
                 <key>CDMP7000.leftDeck.wheelTurn</key>
                 <description>Jogwheel Turn</description>
-                <status>0x90</status>
+                <status>0xB0</status>
                 <midino>0x20</midino>
                 <options>
                     <script-binding/>
