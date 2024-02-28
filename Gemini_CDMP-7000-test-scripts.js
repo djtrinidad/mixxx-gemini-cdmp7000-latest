@@ -82,7 +82,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.reloopExit = new components.Button({
     midi: [0x90, 0x12],
     key: "reloop_exit",
-    output: function(value, _group, _control) {
+    output: function(value, group, _control) {
       if (engine.getValue("[Channel1]", "loop_enabled") == 0) {
       //  midi.sendShortMsg(0x90, 0x10, 0x00);
         engine.setValue(group, "loop_in", false);
