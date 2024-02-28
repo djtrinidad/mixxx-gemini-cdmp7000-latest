@@ -63,19 +63,37 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     key: "loop_in",
     input: function (channel, control, value, status, group) {
        if (value) {
-         this.setValue(true);
-       } // end if
+         this.inSetValue(true);
+       } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
+         this.inSetValue(true);
+       }
     } // end input
   });
 
   this.loopOut = new components.Button({
     midi: [0x90, 0x11],
     key: "loop_out",
+    input: function (channel, control, value, status, group) {
+       if (value) {
+         this.inSetValue(true);
+       } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
+         this.inSetValue(true);
+       }
+    } // end input
   });
 
   this.reloopExit = new components.Button({
     midi: [0x90, 0x12],
     key: "reloop_exit",
+    output: function(value, _group, _control) {
+      if (engine.getValue("[Channel1]", "loop_enabled") == 0) {
+        midi.sendShortMsg(0x90, 0x10, 0x00);
+        midi.sendShortMsg(0x90, 0x11, 0x00);
+      } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
+        midi.sendShortMsg(0x90, 0x10, 0x7F);
+        midi.sendShortMsg(0x90, 0x11, 0x7F);
+      }
+    }
   });
   
  
