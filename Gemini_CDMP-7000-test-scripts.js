@@ -58,19 +58,19 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 
 // Loop section removed to xml
   this.loopIn = new components.Button({
-    midi: [0x90, 0x10],
+    midi: [0x80, 0x10],
     key: "loop_in",
     type: components.Button.prototype.types.toggle,
   });
 
     this.loopOut = new components.Button({
-    midi: [0x90, 0x11],
+    midi: [0x80, 0x11],
     key: "loop_out",
     type: components.Button.prototype.types.toggle,
   });
 
     this.reloopExit = new components.Button({
-    midi: [0x90, 0x12],
+    midi: [0x80, 0x12],
     key: "reloop_exit",
     type: components.Button.prototype.types.toggle,
   });
