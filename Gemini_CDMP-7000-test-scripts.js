@@ -11,8 +11,9 @@ CDMP7000.init = function() {
   CDMP7000.memoActive = 0;
   CDMP7000.vinylModeOn = 0;
   CDMP7000.leftDeck.reconnectComponents();
-  midi.sendSysexMsg(CDMP7000.sysex.concat([0x3C, 0x62, 0x79, 0x65, 0x3E, 0xF7]),9);
-  message = "<artist><title>MIXXX - Welcome DJ<album><genre><length>20<index>0";
+  midi.sendSysexMsg(CDMP7000.sysex.concat([0x3C, 0x62, 0x79, 0x65, 0x3E, 0xF7]),9);  // clear lcd
+  
+  message = "<artist><title>MIXXX DJ<album><genre><length>20<index>0";
   midi.sendSysexMsg(CDMP7000.sysex.concat(message.toInt(), 0xF7),4+message.length);   // sendto lcd song name slot
 };
 
@@ -27,7 +28,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   
   this.cueButton = new components.CueButton([0x90, 0x01]);
   this.playButton = new components.PlayButton([0x90, 0x02]);
-  //this.sync
+  this.syncButton = new components.SyncButton([0x90, 0x0D]);
 
 // =================   Slip / Vinyl / Jogwheel    ================== //
   this.slipModeButton = new components.Button({
@@ -39,24 +40,16 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.vinylModeButton = function (channel, control, value, status, group) {
     if (value) {
       midi.sendShortMsg(0x90, 0x0E, 0x7F);
-      this.inSetValue(true);
+      CDMP7000.vinylModeOn = 1;
     } else if (value && CDMP7000.vinylModeOn == 1) {
       midi.sendShortMsg(0x90, 0x0E, 0x00);
       CDMP7000.vinylModeOn = 0;
     } // end elif
   };
   
-  this.jogWheel = new components.JogWheelBasic({
-    Deck: 1,
-    wheelResolution: 1000,
-    alpha: 1/8,
-    beta: 1/8/32,
-    rpm: 33 + 1/3,
-});
-
   this.wheelTouch = function (channel, control, value, status, group) {
     var deckNumber = script.deckFromGroup(group);
-    if (value) {
+    if (value && CDMP7000.vinylModeOn == 1) {
       var alpha = 1.0/8;
       var beta = alpha/32;
       engine.scratchEnable(deckNumber, 128, 33+1/3, alpha,beta);
@@ -106,8 +99,8 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         engine.setValue(group, "loop_in", false);
         engine.setValue(group, "loop_out", false);
       } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
-        engine.setValue(group, "loop_in", true);
-        engine.setValue(group, "loop_out", true);
+        midi.sendShortMsg(0x90,0x10,0x7F);  // not sure if this works right
+        midi.sendShortMsg(0x90,0x10,0x7F);
       }
     }
   });
