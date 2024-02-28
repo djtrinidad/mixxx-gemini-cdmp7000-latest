@@ -64,9 +64,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     input: function (channel, control, value, status, group) {
        if (value) {
          this.inSetValue(true);
-       } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
-         this.inSetValue(true);
-       }
+       } 
     } // end input
   });
 
@@ -76,9 +74,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     input: function (channel, control, value, status, group) {
        if (value) {
          this.inSetValue(true);
-       } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
-         this.inSetValue(true);
-       }
+       } 
     } // end input
   });
 
