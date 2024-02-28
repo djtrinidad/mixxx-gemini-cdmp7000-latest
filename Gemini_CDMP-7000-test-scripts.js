@@ -56,25 +56,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     rpm: 33 + 1/3,
 });
 
-// Loop section removed to xml
-  this.loopIn = new components.Button({
-    midi: [0x90, 0x10],
-    key: "loop_in",
-    type: components.Button.prototype.types.toggle,
-  });
-
-    this.loopOut = new components.Button({
-    midi: [0x90, 0x11],
-    key: "loop_out",
-    type: components.Button.prototype.types.toggle,
-  });
-
-    this.reloopExit = new components.Button({
-    midi: [0x90, 0x12],
-    key: "reloop_exit",
-    type: components.Button.prototype.types.toggle,
-  });
-  
+ 
 // ================= Hotcue / Memo Button Section ================== //
   
   this.hotcueButtons = [];
