@@ -247,7 +247,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.jogWheel.inputTouch</key>
+                <key>CDMP7000.leftDeck.wheelTouch</key>
                 <description>Wheel Touch</description>
                 <status>0x90</status>
                 <midino>0x18</midino>
@@ -327,7 +327,7 @@
             </control>
             <control> <!-- FIX: Needs Scripting -->
                 <group>[Channel1]</group>
-                <key>CDMP7000.leftDeck.jogWheel.inputWheel</key>
+                <key>CDMP7000.leftDeck.wheelTurn</key>
                 <description>Jogwheel Turn</description>
                 <status>0x90</status>
                 <midino>0x20</midino>
