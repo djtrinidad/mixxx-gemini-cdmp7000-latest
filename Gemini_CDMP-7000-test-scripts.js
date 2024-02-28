@@ -56,7 +56,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 
   this.wheelTouch = function (channel, control, value, status, group) {
     var deckNumber = script.deckFromGroup(group);
-    if ((status & 0xF0) === 0x90) {
+    if (value) {
       var alpha = 1.0/8;
       var beta = alpha/32;
       engine.scratchEnable(deckNumber, 128, 33+1/3, alpha,beta);
