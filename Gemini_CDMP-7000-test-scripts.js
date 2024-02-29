@@ -74,20 +74,19 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     midi: [0x90, 0x10],
     key: "loop_in",
     input: function (channel, control, value, status, group) {
-       midi.sendShortMsg(0x90, 0x10, 0x7F);
-       components.Button.prototype.input.apply(this, arguments);
-       //  engine.setValue(group, "loop_in", true);
-         
-      // } 
-    } // end input
+      if (!value) return;
+      this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
+      components.Button.prototype.input.apply(this, arguments);
+    }, // end input
   });
 
   this.loopOut = new components.Button({
     midi: [0x90, 0x11],
     key: "loop_out",
     input: function (channel, control, value, status, group) {
-       midi.sendShortMsg(0x90, 0x11, 0x7F);
-       components.Button.prototype.input.apply(this, arguments);
+      if (!value) return;
+      this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
+      components.Button.prototype.input.apply(this, arguments);
     } // end input
   });
 
@@ -95,6 +94,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.reloopExit = new components.Button({
     midi: [0x90, 0x12],
     key: "reloop_exit",
+    /* do we need this now
     output: function(value, group, _control) {
       if (engine.getValue("[Channel1]", "loop_enabled") == 0) {
         engine.setValue(group, "loop_in", false);
@@ -104,6 +104,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
         midi.sendShortMsg(0x90,0x10,0x7F);
       }
     }
+    */
   });
   
  
