@@ -8,7 +8,7 @@ CDMP7000.sysex = [0xF0, 0x7D, 0x01];  // pre-amble for all sysex display message
 CDMP7000.init = function() {
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
-  CDMP7000.rightDeck = new CDMP7000.Deck(2, 2);
+//  CDMP7000.rightDeck = new CDMP7000.Deck(2, 2);
   CDMP7000.memoActive = 0;
   CDMP7000.vinylModeOn = 0;
   CDMP7000.leftDeck.reconnectComponents();
