@@ -74,9 +74,11 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     midi: [0x90, 0x10],
     key: "loop_in",
     input: function (channel, control, value, status, group) {
-       if (value) {
-         engine.setValue(group, "loop_in", true);
-       } 
+       midi.sendShortMsg(0x90, 0x10, 0x7F);
+       components.Button.prototype.input.apply(this, arguments);
+       //  engine.setValue(group, "loop_in", true);
+         
+      // } 
     } // end input
   });
 
@@ -84,9 +86,8 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     midi: [0x90, 0x11],
     key: "loop_out",
     input: function (channel, control, value, status, group) {
-       if (value) {
-         engine.setValue(group, "loop_out", true);
-       } 
+       midi.sendShortMsg(0x90, 0x11, 0x7F);
+       components.Button.prototype.input.apply(this, arguments);
     } // end input
   });
 
