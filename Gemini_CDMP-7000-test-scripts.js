@@ -8,6 +8,7 @@ CDMP7000.sysex = [0xF0, 0x7D, 0x01];  // pre-amble for all sysex display message
 CDMP7000.init = function() {
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
+  CDMP7000.rightDeck = new CDMP7000.Deck(2, 2);
   CDMP7000.memoActive = 0;
   CDMP7000.vinylModeOn = 0;
   CDMP7000.leftDeck.reconnectComponents();
@@ -73,38 +74,38 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   this.loopIn = new components.Button({
     midi: [0x90, 0x10],
     key: "loop_in",
-    input: function (channel, control, value, status, group) {
-      if (!value) return;
-      this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
-      components.Button.prototype.input.apply(this, arguments);
-    }, // end input
+    output: function (channel, control, value, status, group) {
+      if (engine.getValue(this.group, "loop_in")) {
+         this.send(0x7F);
+      }
+    }, // end output
   });
 
   this.loopOut = new components.Button({
     midi: [0x90, 0x11],
     key: "loop_out",
-    input: function (channel, control, value, status, group) {
-      if (!value) return;
-      this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
-      components.Button.prototype.input.apply(this, arguments);
-    } // end input
+    output: function (channel, control, value, status, group) {
+       if (engine.getValue(this.group, "loop_out")) {
+         this.send(0x7F);
+       }
+    } // end output
   });
 
   /* replaced midi.sendShortMsg with engine.SetValue */
   this.reloopExit = new components.Button({
     midi: [0x90, 0x12],
     key: "reloop_exit",
-    /* do we need this now
-    output: function(value, group, _control) {
-      if (engine.getValue("[Channel1]", "loop_enabled") == 0) {
-        engine.setValue(group, "loop_in", false);
-        engine.setValue(group, "loop_out", false);
-      } else if (engine.getValue("[Channel1]", "loop_enabled") == 1) {
-        midi.sendShortMsg(0x90,0x10,0x7F);  // not sure if this works right
-        midi.sendShortMsg(0x90,0x10,0x7F);
-      }
-    }
-    */
+    input: function (channel, control, value, status, group) {
+        components.Button.prototype.input.apply(this, arguments);
+
+        if (engine.getValue(group, "loop_enabled")) {
+        midi.sendShortMsg(0x90, 0x10, 0x7F);
+        midi.sendShortMsg(0x90, 0x11, 0x7F);
+        } else {
+        midi.sendShortMsg(0x90, 0x10, 0x00);
+        midi.sendShortMsg(0x90, 0x11, 0x00);
+       }
+    }, // end output
   });
   
  
