@@ -22,8 +22,6 @@ CDMP7000.init = function() {
   message = "<artist><title>MIXXX DJ<album><genre><length>20<index>0";
   midi.sendSysexMsg(CDMP7000.sysex.concat(message.toInt(), 0xF7),4+message.length);   // sendto lcd song name 
 
-  engine.makeConnection('[Channel1]', "loop_in", CDMP7000.leftDeck.loopInLed); 
-
   CDMP7000.timers["halfSec"] = engine.beginTimer(500, CDMP7000.halfSec);
 };
 
@@ -40,7 +38,7 @@ CDMP7000.activeLoopFlash = function () {
     CDMP7000.state["loopFlash"]=!CDMP7000.state["loopFlash"];
 
     var value, group;
-    for (var i=1; i<=2; i++) { // 4 decks
+    for (var i=1; i<=2; i++) { // 2 decks
         value = 0x00;
         group = "[Channel"+i+"]";
         if (engine.getValue(group,"loop_enabled")>0) {
@@ -102,11 +100,20 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   };
 
 // ================= Loop IN/Loop Out/Reloop/Exit ================== //
-this.loopInLed = function (value) {
-   
-   if (value>0) midi.sendShortMsg(0x90, 0x10, 0x7F);
-   else midi.sendShortMsg(0x90, 0x10, 0x00);
-};
+this.loopInButton = new components.HotcueButton({
+            midi: [0x90, 0x04 + i],
+            number: i,
+            unshift: function() {
+            this.inKey = "loop_in";
+            },
+            shift: function() {
+                this.inKey = "loop_in";
+            },
+            input: function(channel, control, value, status, _group) {
+                this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
+                components.Button.prototype.input.apply(this, arguments);
+            },
+    });
 
 // ================= Hotcue / Memo Button Section ================== //
   
