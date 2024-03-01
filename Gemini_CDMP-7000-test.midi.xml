@@ -167,12 +167,12 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>loop_in</key>
+                <key>CDMP7000.leftDeck.loopInButton.input</key>
                 <description>Loop In</description>
                 <status>0x90</status>
                 <midino>0x10</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
