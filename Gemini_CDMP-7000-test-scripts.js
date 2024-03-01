@@ -71,44 +71,7 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 
 // ================= Loop IN/Loop Out/Reloop/Exit ================== //
 
-  this.loopIn = new components.Button({
-    midi: [0x90, 0x10],
-    key: "loop_in",
-    output: function (channel, control, value, status, group) {
-      if (engine.getValue(this.group, "loop_in")) {
-         this.send(0x7F);
-      }
-    }, // end output
-  });
 
-  this.loopOut = new components.Button({
-    midi: [0x90, 0x11],
-    key: "loop_out",
-    output: function (channel, control, value, status, group) {
-       if (engine.getValue(this.group, "loop_out")) {
-         this.send(0x7F);
-       }
-    } // end output
-  });
-
-  /* replaced midi.sendShortMsg with engine.SetValue */
-  this.reloopExit = new components.Button({
-    midi: [0x90, 0x12],
-    key: "reloop_exit",
-    input: function (channel, control, value, status, group) {
-        components.Button.prototype.input.apply(this, arguments);
-
-        if (engine.getValue(group, "loop_enabled")) {
-        midi.sendShortMsg(0x90, 0x10, 0x7F);
-        midi.sendShortMsg(0x90, 0x11, 0x7F);
-        } else {
-        midi.sendShortMsg(0x90, 0x10, 0x00);
-        midi.sendShortMsg(0x90, 0x11, 0x00);
-       }
-    }, // end output
-  });
-  
- 
 // ================= Hotcue / Memo Button Section ================== //
   
   this.hotcueButtons = [];
