@@ -167,7 +167,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>loop_in</key>
+                <key>CDMP7000.leftDeck.LoopInPressed.input</key>
                 <description>Loop In</description>
                 <status>0x90</status>
                 <midino>0x10</midino>
