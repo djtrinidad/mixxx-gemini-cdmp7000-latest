@@ -3,24 +3,56 @@
 var CDMP7000 = {};
 
 CDMP7000.sysex = [0xF0, 0x7D, 0x01];  // pre-amble for all sysex display messages
-
+// ------------- Global Variables ------------- //
+CDMP7000.timers = [];
+CDMP7000.state = [];
 
 CDMP7000.init = function() {
+
+  for (i=0x01; i<=0x60; i++) midi.sendShortMsg(0x90,i,0x00);  // Turn off all LEDs
   
   CDMP7000.leftDeck = new CDMP7000.Deck(1, 1);
 //  CDMP7000.rightDeck = new CDMP7000.Deck(2, 2);
   CDMP7000.memoActive = 0;
   CDMP7000.vinylModeOn = 0;
   CDMP7000.leftDeck.reconnectComponents();
-  midi.sendSysexMsg(CDMP7000.sysex.concat([0x3C, 0x62, 0x79, 0x65, 0x3E, 0xF7]),9);  // clear lcd
   
+  midi.sendSysexMsg(CDMP7000.sysex.concat([0x3C, 0x62, 0x79, 0x65, 0x3E, 0xF7]),9);  // clear lcd
   message = "<artist><title>MIXXX DJ<album><genre><length>20<index>0";
-  midi.sendSysexMsg(CDMP7000.sysex.concat(message.toInt(), 0xF7),4+message.length);   // sendto lcd song name slot
+  midi.sendSysexMsg(CDMP7000.sysex.concat(message.toInt(), 0xF7),4+message.length);   // sendto lcd song name 
+
+  CDMP7000.timers["halfSec"] = engine.beginTimer(500, CDMP7000.halfSec);
 };
 
 CDMP7000.shutdown = function() {
 for (i=0x01; i<=0x60; i++) midi.sendShortMsg(0x90,i,0x00);  // Turn off all LEDs
 };
+
+CDMP7000.halfSec = function () {
+  CDMP7000.activeLoopFlash();
+}
+
+// start activeLoopFlash
+CDMP7000.activeLoopFlash = function () {
+    CDMP7000.state["loopFlash"]=!CDMP7000.state["loopFlash"];
+
+    var value, group;
+    for (var i=1; i<=2; i++) { // 4 decks
+        value = 0x00;
+        group = "[Channel"+i+"]";
+        if (engine.getValue(group,"loop_enabled")>0) {
+            if (CDMP7000.state["loopFlash"]) value = 0x7F;
+        }
+        // Don't send redundant messages
+        if (CDMP7000.state[group+"loop"]==value) continue;
+        CDMP7000.state[group+"loop"] = value;
+        midi.sendShortMsg(0x90,0x10,value);
+        midi.sendShortMsg(0x90,0x11,value);
+    }
+}
+
+// end activeLoopFlash
+
 
 CDMP7000.Deck = function (deckNumbers, midiChannel) {
   components.Deck.call(this, deckNumbers);
