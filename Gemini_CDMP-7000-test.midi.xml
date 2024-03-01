@@ -172,7 +172,7 @@
                 <status>0x90</status>
                 <midino>0x10</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
