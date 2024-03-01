@@ -2,10 +2,11 @@
 
 var CDMP7000 = {};
 
-CDMP7000.sysex = [0xF0, 0x7D, 0x01];  // pre-amble for all sysex display messages
+
 // ------------- Global Variables ------------- //
 CDMP7000.timers = [];
 CDMP7000.state = [];
+CDMP7000.sysex = [0xF0, 0x7D, 0x01];  // pre-amble for all sysex display messages
 
 CDMP7000.init = function() {
 
@@ -26,13 +27,13 @@ CDMP7000.init = function() {
 
 CDMP7000.shutdown = function() {
 for (i=0x01; i<=0x60; i++) midi.sendShortMsg(0x90,i,0x00);  // Turn off all LEDs
+midi.sendSysexMsg(CDMP7000.sysex.concat([0x3C, 0x62, 0x79, 0x65, 0x3E, 0xF7]),9);  // clear lcd
 };
 
 CDMP7000.halfSec = function () {
   CDMP7000.activeLoopFlash();
 }
 
-// start activeLoopFlash
 CDMP7000.activeLoopFlash = function () {
     CDMP7000.state["loopFlash"]=!CDMP7000.state["loopFlash"];
 
@@ -50,9 +51,6 @@ CDMP7000.activeLoopFlash = function () {
         midi.sendShortMsg(0x90,0x11,value);
     }
 }
-
-// end activeLoopFlash
-
 
 CDMP7000.Deck = function (deckNumbers, midiChannel) {
   components.Deck.call(this, deckNumbers);
@@ -102,7 +100,10 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   };
 
 // ================= Loop IN/Loop Out/Reloop/Exit ================== //
-
+this.LoopInPressed = new components.Button({
+    midi: [0x90, 0x10],
+    key: "loop_in",
+  });
 
 // ================= Hotcue / Memo Button Section ================== //
   
