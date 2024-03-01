@@ -22,6 +22,8 @@ CDMP7000.init = function() {
   message = "<artist><title>MIXXX DJ<album><genre><length>20<index>0";
   midi.sendSysexMsg(CDMP7000.sysex.concat(message.toInt(), 0xF7),4+message.length);   // sendto lcd song name 
 
+  engine.makeConnection('[Channel1]', "loop_in", CDMP7000.leftDeck.loopInLed); 
+
   CDMP7000.timers["halfSec"] = engine.beginTimer(500, CDMP7000.halfSec);
 };
 
@@ -100,15 +102,11 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
   };
 
 // ================= Loop IN/Loop Out/Reloop/Exit ================== //
-this.LoopInPressed = new components.Button({
-    midi: [0x90, 0x10],
-    key: "loop_in",
-    input: function (channel, control, value, status, group) {
-      if (!value) return;
-   //   this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
-      components.Button.prototype.input.apply(this, arguments);
-    } // end input
-  });
+this.loopInLed = function (value) {
+   
+   if (value>0) midi.sendShortMsg(0x90, 0x10, 0x7F);
+   else midi.sendShortMsg(0x90, 0x10, 0x00);
+};
 
 // ================= Hotcue / Memo Button Section ================== //
   
