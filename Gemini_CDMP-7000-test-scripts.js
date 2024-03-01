@@ -99,21 +99,6 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
     engine.scratchTick(deckNumber,newValue);
   };
 
-// ================= Loop IN/Loop Out/Reloop/Exit ================== //
-this.loopInButton = new components.HotcueButton({
-            midi: [0x90, 0x04 + i],
-            number: i,
-            unshift: function() {
-            this.inKey = "loop_in";
-            },
-            shift: function() {
-                this.inKey = "loop_in";
-            },
-            input: function(channel, control, value, status, _group) {
-                this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
-                components.Button.prototype.input.apply(this, arguments);
-            },
-    });
 
 // ================= Hotcue / Memo Button Section ================== //
   
