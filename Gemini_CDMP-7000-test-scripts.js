@@ -103,6 +103,11 @@ CDMP7000.Deck = function (deckNumbers, midiChannel) {
 this.LoopInPressed = new components.Button({
     midi: [0x90, 0x10],
     key: "loop_in",
+    input: function (channel, control, value, status, group) {
+      if (!value) return;
+   //   this.send(this.isPress(channel, control, value, status) ? this.on : this.off);
+      components.Button.prototype.input.apply(this, arguments);
+    } // end input
   });
 
 // ================= Hotcue / Memo Button Section ================== //
