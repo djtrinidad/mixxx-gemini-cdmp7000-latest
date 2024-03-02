@@ -452,6 +452,8 @@
             <key>loop_start_position</key>
             <status>0x90</status>
             <midino>0x10</midino>
+            <on>0x00</on>
+            <off>0x7F</off>
             <minimum>0.1</minimum>
           </output>
           <output>
