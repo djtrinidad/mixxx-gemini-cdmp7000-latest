@@ -23,6 +23,17 @@ CDMP7000.init = function() {
   midi.sendSysexMsg(CDMP7000.sysex.concat(message.toInt(), 0xF7),4+message.length);   // sendto lcd song name 
 
   CDMP7000.timers["halfSec"] = engine.beginTimer(500, CDMP7000.halfSec);
+
+  CDMP7000.effectUnit = new components.EffectUnit([1, 2]);
+  CDMP7000.effectUnit.enableButtons[1].midi = [0x90, 0x14];
+  CDMP7000.effectUnit.enableButtons[2].midi = [0x90, 0x15];
+  CDMP7000.effectUnit.enableButtons[3].midi = [0x90, 0x16];
+  CDMP7000.effectUnit.knobs[1].midi = [0xB0, 0x01];
+  CDMP7000.effectUnit.knobs[2].midi = [0xB0, 0x02];
+  CDMP7000.effectUnit.knobs[3].midi = [0xB0, 0x03];
+  CDMP7000.effectUnit.dryWetKnob.midi = [0xB0, 0x04];
+  CDMP7000.effectUnit.effectFocusButton.midi = [0x90, 0x04];
+  CDMP7000.effectUnit.init();
 };
 
 CDMP7000.shutdown = function() {
