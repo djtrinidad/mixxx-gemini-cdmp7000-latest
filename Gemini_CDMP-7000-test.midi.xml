@@ -426,23 +426,23 @@
                 </options>
             </control>
             <control> <!-- FIX: find a purpose/control for this -->
-                <group>[Channel1]</group>
-                <key></key>
+                <group>[EffectRack1]</group>
+                <key>CDMP7000.effectUnit.knobs[1].input</key>
                 <description>Start Time</description>
-                <status>0x90</status>
+                <status>0xB0</status>
                 <midino>0x2A</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control> <!-- FIX: find a purpose/control for this -->
                 <group>[Channel1]</group>
                 <key></key>
-                <description>Stop Time</description>
-                <status>0x90</status>
+                <description>CDMP7000.effectUnit.knobs[2].input</description>
+                <status>0xB0</status>
                 <midino>0x2B</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
         </controls>
