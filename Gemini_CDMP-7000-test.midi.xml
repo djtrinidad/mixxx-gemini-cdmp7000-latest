@@ -206,33 +206,33 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_Channel1_Effect1]</group>
-                <key>enabled</key>
+                <group>[EffectRack1]</group>
+                <key>CDMP7000.effectUnit13.enableButtons[1].input</key>
                 <description>Effect 1</description>
                 <status>0x90</status>
                 <midino>0x14</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_Channel1_Effect2]</group>
-                <key>enabled</key>
+                <group>[EffectRack1]</group>
+                <key>CDMP7000.effectUnit13.enableButtons[2].input</key>
                 <description>Effect 2</description>
                 <status>0x90</status>
                 <midino>0x15</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_Channel1_Effect3]</group>
-                <key>enabled</key>
+                <group>[EffectRack1]</group>
+                <key>CDMP7000.effectUnit13.enableButtons[3].input</key>
                 <description>Effect 3</description>
                 <status>0x90</status>
                 <midino>0x16</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
