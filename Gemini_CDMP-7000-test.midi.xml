@@ -207,7 +207,7 @@
             </control>
             <control>
                 <group>[EffectRack1]</group>
-                <key>CDMP7000.effectUnit13.enableButtons[1].input</key>
+                <key>CDMP7000.effectUnit.enableButtons[1].input</key>
                 <description>Effect 1</description>
                 <status>0x90</status>
                 <midino>0x14</midino>
@@ -217,7 +217,7 @@
             </control>
             <control>
                 <group>[EffectRack1]</group>
-                <key>CDMP7000.effectUnit13.enableButtons[2].input</key>
+                <key>CDMP7000.effectUnit.enableButtons[2].input</key>
                 <description>Effect 2</description>
                 <status>0x90</status>
                 <midino>0x15</midino>
@@ -227,7 +227,7 @@
             </control>
             <control>
                 <group>[EffectRack1]</group>
-                <key>CDMP7000.effectUnit13.enableButtons[3].input</key>
+                <key>CDMP7000.effectUnit.enableButtons[3].input</key>
                 <description>Effect 3</description>
                 <status>0x90</status>
                 <midino>0x16</midino>
@@ -416,13 +416,13 @@
                 </options>
             </control>
             <control> <!-- FIX: script this to affect the active effect -->
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>mix</key>
+                <group>[EffectRack1]</group>
+                <key>CDMP7000.effectUnit.dryWetKnob.input</key>
                 <description>Dry/Wet</description>
-                <status>0x90</status>
+                <status>0xB0</status>
                 <midino>0x29</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control> <!-- FIX: find a purpose/control for this -->
