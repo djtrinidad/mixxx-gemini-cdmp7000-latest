@@ -28,11 +28,11 @@ CDMP7000.init = function() {
   CDMP7000.effectUnit.enableButtons[1].midi = [0x90, 0x14];
   CDMP7000.effectUnit.enableButtons[2].midi = [0x90, 0x15];
   CDMP7000.effectUnit.enableButtons[3].midi = [0x90, 0x16];
-  CDMP7000.effectUnit.knobs[1].midi = [0xB0, 0x01];
-  CDMP7000.effectUnit.knobs[2].midi = [0xB0, 0x02];
-  CDMP7000.effectUnit.knobs[3].midi = [0xB0, 0x03];
-  CDMP7000.effectUnit.dryWetKnob.midi = [0xB0, 0x04];
-  CDMP7000.effectUnit.effectFocusButton.midi = [0x90, 0x04];
+  CDMP7000.effectUnit.knobs[1].midi = [0xB0, 0x2A];
+  CDMP7000.effectUnit.knobs[2].midi = [0xB0, 0x2B];
+  CDMP7000.effectUnit.knobs[3].midi = [0xB0, 0x00];
+  CDMP7000.effectUnit.dryWetKnob.midi = [0xB0, 0x29];
+  CDMP7000.effectUnit.effectFocusButton.midi = [0x90, 0x00];
   CDMP7000.effectUnit.init();
 };
 
